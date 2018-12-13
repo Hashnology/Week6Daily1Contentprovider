@@ -4,8 +4,8 @@
     <uses-permission android:name="com.example.hashi.week6daily1contentprovider.CONTENT_PROVIDER"/>
     <!--<permission-->
         <!--android:name="com.example.hashi.week6daily1contentprovider.PERMISSION"/>-->
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"></uses-permission>
+    <permission android:name="com.example.hashi.week6daily1contentprovider.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.example.hashi.week6daily1contentprovider.READ_DATABASE" android:protectionLevel="normal"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,12 +22,16 @@
         </activity>
 
         <provider
+            android:authorities="com.example.hashi.week6daily1contentprovider"
             android:name=".ContactsProvider"
-            android:authorities="com.example.hashi.week6daily1contentprovider.ContactsProvider.contacts"
-            android:enabled="true"
-            android:exported="true"
-            android:multiprocess="true"
-            />
+            android:writePermission="com.example.hashi.week6daily1contentprovider.WRITE_DATABASE"
+            android:readPermission="com.example.hashi.week6daily1contentprovider.READ_DATABASE"/>
+
+        <!--<provider-->
+            <!--android:authorities="in.eyehunt.mycontactcontentproviders"-->
+            <!--android:name=".MyContactsProvider"-->
+            <!--android:writePermission="in.eyehunt.mycontactcontentproviders.WRITE_DATABASE"-->
+            <!--android:readPermission="in.eyehunt.mycontactcontentproviders.READ_DATABASE"/>-->
     </application>
 
 </manifest>
